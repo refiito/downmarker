@@ -10,14 +10,14 @@ class DownMarker < Sinatra::Base
   end
 
   get "/" do
-    erb "", :layout => :layout, :layout_engine => :erb
+    erb :index
   end
 
   get "/sections/:file" do
     if sections.include?(params[:file])
       markdown File.read("sections/#{params[:file]}.md"), :layout => :layout, :layout_engine => :erb
     else
-      
+      erb :index  
     end
   end
 end
